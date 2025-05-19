@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-gray-50 p-8">
       <h1 className="text-3xl font-bold text-gray-800 mb-4">
-        Cylinder Flow Simulation (Source Panel Method)
+        Cylinder Flow Simulation (Source Panel Method) by 이대한
       </h1>
 
       <div className="flex items-center gap-4 mb-8">
