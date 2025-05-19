@@ -104,12 +104,9 @@ function computeInfluenceCoeffs(panels: Panel[]) {
 export function solvePanelMethod(U_inf: number, N: number) {
   const panels = createCylinderPanels(N);
   const { I, J } = computeInfluenceCoeffs(panels);
-  console.log(I);
-  console.log(J);
   const b = panels.map((p) => -Math.cos(p.theta + Math.PI / 2));
 
   const lambda = numeric.solve(I, b);
-  console.log(lambda.map((val) => Math.round(val * 10000) / 10000));
 
   // Assign computed source strengths to panels
   for (let i = 0; i < N; i++) {

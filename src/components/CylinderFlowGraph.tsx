@@ -46,10 +46,6 @@ const CylinderFlowGraph = ({ panels: N }: Props) => {
   useEffect(() => {
     const panels = solvePanelMethod(U_inf, N);
 
-    // Numerical Solution (Cp values)
-    const cpNum = panels.map((p) => p.cp);
-    console.log(cpNum.map((val) => Math.round(val * 10000) / 10000));
-
     // Analytical Solution
     const theta = Array.from({ length: 361 }, (_, i) => (i * Math.PI) / 180);
     const cpAnalytic = theta.map((t) => 1 - 4 * Math.sin(t) ** 2);
@@ -98,7 +94,6 @@ const CylinderFlowGraph = ({ panels: N }: Props) => {
     plugins: { legend: { position: "top" } },
     scales: {
       y: {
-        // reverse: true,
         title: { display: true, text: "Pressure Coefficient (Cp)" },
       },
       x: {
