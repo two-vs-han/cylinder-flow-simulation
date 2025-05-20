@@ -20,9 +20,6 @@ export function createCylinderPanels(N: number, R = 1): Panel[] {
   const dTheta = (2 * Math.PI) / N;
 
   for (let i = 0; i < N; i++) {
-    // const thetaStart = -(i - 1 / 2) * dTheta;
-    // const thetaEnd = -(i + 1 / 2) * dTheta;
-
     const thetaStart = Math.PI - (i - 1 / 2) * dTheta;
     const thetaEnd = Math.PI - (i + 1 / 2) * dTheta;
 
@@ -72,7 +69,6 @@ function computeInfluenceCoeffs(panels: Panel[]) {
 
       if (i === j) {
         I[i][j] = Math.round(0.5 * 2 * Math.PI * 10000) / 10000;
-        // I[i][j] = 0.5;
       } else {
         const A =
           -(x_i - X_j) * Math.cos(pj.theta) - (y_i - Y_j) * Math.sin(pj.theta);
@@ -116,7 +112,6 @@ export function solvePanelMethod(U_inf: number, N: number) {
   // Compute tangential velocities using proper integration
   for (let i = 0; i < N; i++) {
     let vt = U_inf * Math.sin(panels[i].theta + Math.PI / 2);
-    // panels[i].lambda * U_inf ; // Free stream contribution
 
     for (let j = 0; j < N; j++) {
       vt += U_inf * panels[j].lambda * J[i][j];
